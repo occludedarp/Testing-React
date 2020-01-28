@@ -14,6 +14,7 @@ export default function StarWarsCharacters() {
     setIsLoading(true);
     const getCharacters = async () => {
       const characters = await getData(url);
+                                            // everything below is like the .catch
       console.log(characters);
       setNext(characters.next);
       setPrevious(characters.previous);
@@ -23,14 +24,15 @@ export default function StarWarsCharacters() {
     getCharacters();
   }, [url]);
 
-  const goToNext = e => {
+  const goToNext = e => { //added async to event parameter
     e.preventDefault();
-    setUrl(next);
+    setUrl(next);         
+    console.log(e)
   };
 
-  const goToPrevious = e => {
+  const goToPrevious = e => { //added async to event parameter
     e.preventDefault();
-    setUrl(previous);
+    setUrl(previous);     // await ?
   };
 
   return (
